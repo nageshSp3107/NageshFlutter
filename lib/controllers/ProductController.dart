@@ -8,6 +8,8 @@ import 'package:flutter/services.dart' as rootBundle;
 
 class ProductController extends GetxController{
   var products = <Product>[].obs;
+  var productsBrand = <Product>[].obs;
+  var brandName = "".obs;
 
   @override
   onInit(){
@@ -21,6 +23,10 @@ class ProductController extends GetxController{
     //decode json data as list
     final list = json.decode(jsondata) as List<dynamic>;
     products.value = list.map((e) => Product.fromJson(e)).toList();
+  }
+
+  onBrandChanged(var brand){
+    brandName.value =  brand;
   }
 
 

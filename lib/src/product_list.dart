@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:nagesh_flutter/controllers/ProductController.dart';
 import 'package:nagesh_flutter/src/product_item.dart';
+import 'package:nagesh_flutter/src/order_summary.dart';
 
 class ProductList extends StatelessWidget {
   const ProductList({Key? key}) : super(key: key);
@@ -39,16 +40,32 @@ class ProductsPage extends StatelessWidget {
               child: Expanded(
                 child: GetX<ProductController>(
                   builder: (productController) {
-                    return ListView.builder(
+                    return ListView.separated(
+                        shrinkWrap: true,
+                        separatorBuilder: (context, index) {
+                          return Divider();
+                        },
                         itemCount: productController.products.length,
                         itemBuilder: (context, index){
                           var product = productController.products[index];
-                          return ProductItem(product: product);
+                          return ProductItem(product: product, productController: productController);
                         });
                   },
                 ),
               ),
             ),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                side: BorderSide(width: 2, color: Colors.black),
+              ),
+              onPressed: () {
+                Get.to(() => OrderSummary(), arguments: ['price',productController.products]);
+              },
+              child: Text('Submit Product', style: TextStyle(color: Colors.black),),
+            )
           ],
         ),
       ),
