@@ -31,15 +31,15 @@ class OrderItem extends StatelessWidget {
                       SizedBox(
                         height: 5,
                       ),
-                      Text('Selected Color: ', style: Theme.of(context).textTheme.labelMedium,),
+                      Text('Selected Color: ${product?.selectedColor?.split(".")[1] ?? ''}', style: Theme.of(context).textTheme.labelMedium,),
                       SizedBox(
                         height: 5,
                       ),
-                      Text('Selected Brand: ', style: Theme.of(context).textTheme.labelMedium,),
+                      Text('Selected Brand: ${product!.selectedBrand}', style: Theme.of(context).textTheme.labelMedium,),
                       SizedBox(
                         height: 5,
                       ),
-                      Text('sd', style: Theme.of(context).textTheme.labelMedium,),
+                      Text(product!.price, style: Theme.of(context).textTheme.labelMedium,),
                       SizedBox(
                         height: 5,
                       ),

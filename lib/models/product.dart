@@ -24,6 +24,9 @@ class Product {
   List<Color> colors;
   String productName;
   List<Brand> brands;
+  String? selectedColor;
+  String? selectedBrand;
+  String? qty;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
     id: json["_id"],
@@ -46,12 +49,12 @@ class Product {
 
 class Brand {
   Brand({
-    required this.id,
-    required this.name,
+     this.id,
+     this.name,
   });
 
-  int id;
-  String name;
+  int? id;
+  String? name;
 
   factory Brand.fromJson(Map<String, dynamic> json) => Brand(
     id: json["id"],

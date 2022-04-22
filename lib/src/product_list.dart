@@ -62,6 +62,7 @@ class ProductsPage extends StatelessWidget {
                 side: BorderSide(width: 2, color: Colors.black),
               ),
               onPressed: () {
+                print(productController.textController.value);
                 Get.to(() => OrderSummary(), arguments: ['price',productController.products]);
               },
               child: Text('Submit Product', style: TextStyle(color: Colors.black),),
